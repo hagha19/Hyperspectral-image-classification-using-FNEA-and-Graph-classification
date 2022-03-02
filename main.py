@@ -170,7 +170,7 @@ def segment_graph(data, gt, segmentation_method = 0):
     if segmentation_method:
         segmented_HSI = seg.felzenszwalb(data, scale = 100 , sigma= 1, min_size = 50)
     else:
-        segmented_HSI = np.array(Image.open(r"C:\Users\hamid\Desktop\HSI classification with FNEA and KNN\SegmentedPaviaU.tif"))
+        segmented_HSI = np.array(Image.open(r"Segmented image path"))
     return segmented_HSI
 
 
@@ -205,13 +205,12 @@ if __name__ == "__main__":
     start_time = time.time()
     ## Reading Envi data ***********
     if data_name == 'PaviaU':
-        data_path = "E:/university/MSC/thesis/data/Pavia University scene/paviaU.hdr"
-        gt_path = "C:/Users/hamid/Desktop/PaviaU_gt.mat"
+        data_path = "image path"
+        gt_path = "ground truth path"
     elif data_name == 'Salinas':         
-        data_path = "E:/university/MSC/thesis/data/Salinas scene/salinas_corrected.dat.hdr"
-        gt_path = "E:/university/MSC/thesis/data/Salinas scene/Salinas_gt.mat" 
+        data_path = "image path"
+        gt_path = "ground truth path" 
     data = spectral.io.envi.open(data_path)
-    #data = Image.open(r"C:\Users\hamid\Desktop\paviaU-8band.tif")   
     data = data[:,:,:]
     row, col, dim = data.shape    
     gt = sco.loadmat(gt_path)
